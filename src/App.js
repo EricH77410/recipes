@@ -46,7 +46,14 @@ const App = () => {
         <Route 
           exact 
           path='/admin'
-          render={ () => currentUser.email==='eric.hamimi@gmail.com' ? (<Admin />):(<Redirect to="/"/>)} 
+          render={ 
+            () => {
+              if (currentUser && currentUser.email === 'eric.hamimi@gmail.com') {
+                return <Admin />
+              }
+              return <Redirect to="/"/>
+            }
+          }
         />
         <Route exact path="/test" component={TestComp}/>
         <Route component={NotFound} />

@@ -23,7 +23,7 @@ function RecetteForm() {
   }
 
   return (
-    <div>
+    <div className="recette-form">
       <Title title="Ajouter une recette"/>
       <form onSubmit={handleSubmit}>
         <Input label="Titre" name="nom" type="text" required handleChange={handleChange} />
