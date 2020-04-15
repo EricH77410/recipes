@@ -1,0 +1,31 @@
+.signin {
+  display: flex;
+  margin-top: 5rem;
+  box-shadow: var(--darkShadow);
+
+  &-left {
+    background: url('../../assets/images/signin_bg.jpg') center/cover no-repeat;
+  }
+
+  &-right {
+    border: 1px solid var(--primaryColor);
+    padding: 5rem 3rem;  
+  }
+
+  &-action {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+
+    &-login {
+      text-align: center;
+      margin-top: 2rem;
+      cursor: pointer;
+      color: var(--primaryColor);
+
+      &:hover {
+        color: var(--darkGrey);
+      }
+    }
+  }
+}

@@ -1,26 +1,59 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useContext } from 'react'
+import { Switch, Route, Redirect } from 'react-router-dom'
+import { auth } from './firebase/firebase'
+import { RecetteContext } from './context/Provider'
 
-function App() {
+// Components
+import Home from './pages/Home/Home'
+import Inscription from './pages/Inscription/Inscription'
+import Recettes from './pages/Recettes/Recettes.page'
+import RecetteDetail from './components/Recette-details/Recette-details'
+import Header from './components/Header/Header'
+import TestComp from './components/TestComp/TestComp'
+import NotFound from './components/NotFound/NotFound'
+import Admin from './pages/Admin/Admin'
+
+const App = () => {
+  const { login, logout, currentUser } = useContext(RecetteContext)
+  useEffect(() => {
+    if (!currentUser) {
+      auth.onAuthStateChanged(async user =>{
+        if (user) {
+          console.log('user: ', user)
+          login(user)
+        } else {
+          console.log('no current user')
+          logout()          
+        }
+      })  
+    }    
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Header />
+      <Switch>
+        <Route exact path='/' component={Home}/>
+        <Route exact path='/recettes' component={Recettes}/>
+        <Route path='/recettes/:id' component={RecetteDetail}/>
+
+        <Route 
+          exact 
+          path='/inscription' 
+          render={ () => currentUser ? (<Redirect to="/" />) : (<Inscription/>) }
+        />
+        
+        <Route 
+          exact 
+          path='/admin'
+          render={ () => currentUser.email==='eric.hamimi@gmail.com' ? (<Admin />):(<Redirect to="/"/>)} 
+        />
+        <Route exact path="/test" component={TestComp}/>
+        <Route component={NotFound} />
+      </Switch>
+    </>
+  )
 }
 
-export default App;
+export default App
+
