@@ -5,6 +5,8 @@
   --primaryColor: #af9a7d;
   --darkGrey: #cfcfcf;
   --mainTransition: all 0.3s linear;
+  --mainBlack: #383838;
+  --mainWhite: #fff;
 }
 
 /* globals */
@@ -75,4 +77,53 @@ h6 {
     color: var(--primaryColor);
   }
 
+}
+
+.hero {
+  min-height: calc(50vh - 66px);  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &::before{
+    background: url('./../../assets/images/cover.jpg') center/cover no-repeat;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 48%;
+    z-index: -2;
+    opacity: 0.4;
+  }
+
+}
+
+@media screen and (max-width: 776px) {
+  .banner {
+    border: none;
+    padding: 0.5rem; 
+
+    h1 {
+      font-size: 2rem;
+      text-align: center;     
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  .latest-center {
+    grid-row-gap: 1rem;
+  }
+
+  .latest {
+    padding: 0;
+  }
+
+  .title {
+    margin-bottom: 1.5rem;
+  }
 }

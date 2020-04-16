@@ -8,6 +8,7 @@
     box-shadow: var(--darkShadow);
     display: block;
     margin: 1rem auto;
+    width: 100%;
   }
 
   p {
@@ -20,7 +21,8 @@
 
     .ingredient {
       width: 50%;
-      
+      border-right: 2px solid var(--primaryColor);
+
       .ingredient-list>div {
         margin-bottom: 1rem;
       }
@@ -31,6 +33,29 @@
 
       ol>li {
         margin-bottom: 1rem;
+      }
+    }
+  }
+
+  @media screen and (max-width: 776px) {
+    .recette-info {
+      flex-direction: column;
+      width: 100%;
+
+      .ingredient {
+        width: 100%;
+        border: none;
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .etape {
+        width: 100%;
+        margin-bottom: 2rem;
+      }
+
+      .title {
+        margin-bottom: 1.5rem;
       }
     }
   }

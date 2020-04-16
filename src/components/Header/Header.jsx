@@ -3,9 +3,17 @@ import { Link } from 'react-router-dom'
 import { RecetteContext } from '../../context/Provider'
 import { auth } from '../../firebase/firebase'
 import './Header.style.scss'
-const Header = () => {
 
+const Header = () => {
   const { currentUser } = useContext(RecetteContext)
+
+  const showAdminLink = () => {
+    if (currentUser && currentUser.email === 'eric.hamimi@gmail.com') {
+      return <Link className="nav-item nav-link" to="/admin" >Admin</Link>
+    }
+  }
+
+
 
   return (
     <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-light">
@@ -16,11 +24,13 @@ const Header = () => {
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav">
           <Link className="nav-item nav-link active" to='/recettes'>Les Recettes <span className="sr-only">(current)</span></Link>
-          <Link className="nav-item nav-link" to="/admin" >Admin</Link>
+ 
+          {showAdminLink()}
+          
         </div>        
       </div>
       <div className="navbar-nav nav-right">
-        { currentUser ?  ( <button className="nav-item nav-link" onClick={()=>auth.signOut()}>Déconnexion</button>) :
+        { currentUser ?  ( <Link className="nav-item nav-link" onClick={()=>auth.signOut()}>Déconnexion</Link>) :
           (
             <Link className="nav-item nav-link" to="/inscription">Se Connecter</Link>            
           )

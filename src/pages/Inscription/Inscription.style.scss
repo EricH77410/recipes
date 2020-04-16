@@ -1,6 +1,6 @@
 .signin {
   display: flex;
-  margin-top: 5rem;
+  margin-top: 1rem;
   box-shadow: var(--darkShadow);
 
   &-left {
@@ -26,6 +26,32 @@
       &:hover {
         color: var(--darkGrey);
       }
+    }
+  }
+
+  .btn {
+    width: 100%;
+    margin-right: 5px;
+  }
+
+  @media screen and (max-width: 776px) {
+
+    .signin-left {
+      display: none;
+    }
+
+    .signin-right {
+      padding: 1rem;
+    }
+
+    .signin-action {
+      margin-top: 1rem;
+      display: block;      
+    }
+
+    .btn {
+      width: 100%;
+      margin-bottom: 5px;
     }
   }
 }
