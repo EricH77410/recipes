@@ -9,7 +9,6 @@ import Inscription from './pages/Inscription/Inscription'
 import Recettes from './pages/Recettes/Recettes.page'
 import RecetteDetail from './components/Recette-details/Recette-details'
 import Header from './components/Header/Header'
-import TestComp from './components/TestComp/TestComp'
 import NotFound from './components/NotFound/NotFound'
 import Admin from './pages/Admin/Admin'
 
@@ -55,7 +54,6 @@ const App = () => {
             }
           }
         />
-        <Route exact path="/test" component={TestComp}/>
         <Route component={NotFound} />
       </Switch>
     </>
