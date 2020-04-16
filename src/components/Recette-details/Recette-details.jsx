@@ -33,7 +33,7 @@ if (error) return <div>{error.message}</div>
     <div className="recette-details container">
       <Title title={nom}/>
       <img src={image} alt={nom}/>
-      <p>{categorie}</p>
+      <p className="recette-categorie">{categorie}</p>
       <p>{description}</p>
       <div className="recette-info">
         <div className="ingredient">
