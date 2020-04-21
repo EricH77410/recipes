@@ -5,23 +5,27 @@ export const RecetteContext = createContext({
   recettes: [],
   latest: [],
   currentUser: null,
-  error: null,
   isLoading: true,  
   activeRecette: null,
   login: () => {},
-  logout: () => {}
+  logout: () => {},
+  deleteRecipe: () => {}
 })
 
 const RecetteProvider = ({ children }) => {
   const [recettes, setRecettes] = useState([])
   const [latest, setLatest] = useState([])
   const [currentUser, setCurrentUser] = useState(null)
-  const [error, setError] = useState(null)
   const [isLoading, setLoading] = useState(true)
 
   const login = user => {
     const {displayName, email} = user
     setCurrentUser({displayName, email})
+  }
+
+  const deleteRecipe = id => {
+    firebase.database().ref(`recettes/${id}`).remove()    
+    console.log('delete: '+id)
   }
 
   const logout = () => setCurrentUser(null)
@@ -59,11 +63,11 @@ const RecetteProvider = ({ children }) => {
     <RecetteContext.Provider value={{
       recettes,
       latest,
-      error,
       isLoading,      
       currentUser,
       login,
-      logout
+      logout,
+      deleteRecipe
     }}>
       {children}
     </RecetteContext.Provider>

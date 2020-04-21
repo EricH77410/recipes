@@ -2,16 +2,17 @@
   margin-top: 1rem;
   border: 2px solid var(--primaryColor);
   border-radius: 1rem;
+  margin-bottom: 2rem;
 
-  .recette-categorie {
+  .recette-categorie, .recette-preparation, .recette-cuisson {
     background: rgba(0, 0, 0, 0.8);
     color: #fff;
     padding: 0.3rem 0.6rem 0.5rem;
     border-bottom-right-radius: 1rem;
     font-size: 0.5rem;
     text-align: center;
-    width: 30%;
-    text-transform: uppercase;
+    // width: 15%;
+    text-transform: uppercase;  
 
     h6 {
       margin-bottom: 0;
@@ -86,4 +87,53 @@
   border: 2px solid var(--primaryColor);
   border-radius: 1rem;
   padding: 2rem;
+}
+
+.recette-details-bandeau {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+
+  .btn {
+    padding: 0 1rem;
+    color: var(--mainWhite);
+    margin-left: auto;
+    margin-top: 0.2rem;
+  }
+
+  .btn-edit {
+    background: var(--primaryColor);   
+    margin-right: 1rem;
+  }
+
+  .btn-suppr {
+    background-color: red;
+  }
+}
+
+.recette-extras {
+  display: flex;
+  width: 75%;
+}
+
+@media screen and (max-width: 776px) {
+  .recette-details-bandeau {
+    flex-direction: column;
+
+    p {
+      width: 33%;
+    }
+  }
+  .recette-extras {
+    width: 100%;
+  }
+
+  .recette-action {
+    text-align: center;
+    margin-top: 0;
+
+    .btn {
+      font-size: 0.8rem;
+    }
+  }
 }

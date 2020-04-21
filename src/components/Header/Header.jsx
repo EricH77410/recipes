@@ -12,9 +12,7 @@ const Header = () => {
       return <Link className="nav-item nav-link" to="/admin" >Admin</Link>
     }
   }
-
-
-
+  
   return (
     <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-light">
       <Link className="navbar-brand" to="/">Les Recettes des Amis</Link>
@@ -30,7 +28,7 @@ const Header = () => {
         </div>        
       </div>
       <div className="navbar-nav nav-right">
-        { currentUser ?  ( <Link className="nav-item nav-link" onClick={()=>auth.signOut()}>Déconnexion</Link>) :
+        { currentUser ?  ( <span className="nav-item nav-link" onClick={()=>auth.signOut()}>Déconnexion</span>) :
           (
             <Link className="nav-item nav-link" to="/inscription">Se Connecter</Link>            
           )

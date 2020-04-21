@@ -11,6 +11,7 @@ import RecetteDetail from './components/Recette-details/Recette-details'
 import Header from './components/Header/Header'
 import NotFound from './components/NotFound/NotFound'
 import Admin from './pages/Admin/Admin'
+import EditRecette from './pages/Admin/EditRecette'
 
 const App = () => {
   const { login, logout, currentUser } = useContext(RecetteContext)
@@ -18,15 +19,13 @@ const App = () => {
     if (!currentUser) {
       auth.onAuthStateChanged(async user =>{
         if (user) {
-          console.log('user: ', user)
           login(user)
         } else {
-          console.log('no current user')
           logout()          
         }
       })  
     }    
-  }, [])
+  }, [currentUser, login, logout ])
 
   return (
     <>
@@ -54,6 +53,7 @@ const App = () => {
             }
           }
         />
+        <Route path='/recette/edit/:id' component={EditRecette} />
         <Route component={NotFound} />
       </Switch>
     </>
